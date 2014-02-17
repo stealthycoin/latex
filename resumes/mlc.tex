@@ -1,0 +1,88 @@
+\documentclass[11pt]{article} %Sets the default text size to 11pt and class to article.
+
+\usepackage{changepage}
+
+\pagenumbering{gobble}
+\topmargin=0.0in
+\oddsidemargin=0.0in
+\evensidemargin=0in
+\textwidth=6.5in 
+\marginparwidth=0.5in
+\headheight=0pt
+\headsep=0pt
+\textheight=9.0in
+
+%%for indented paragraphs
+\newenvironment{indentpar}[1]%
+ {\begin{list}{}%
+         {\setlength{\leftmargin}{#1}}%
+         \item[]%
+ }
+ {\end{list}}
+
+\begin{document}
+\centerline {\LARGE \bf John W. Carlyle}
+\centerline {831.345.9244 ~~~~~~~~~~ john.w.carlyle@gmail.com}
+\bigskip
+
+\noindent {\Large \bf Objective: Instructional Assistant I}
+\smallskip
+\noindent\\
+Focused, creative, efficient, analytical tutor. Technology savvy. Good sense of humor, organized and resourceful in finding elegant solutions. Known as approachable, pragmatic, and possesses a strong work ethic. 
+\bigskip
+
+\bigskip
+\noindent {\Large \bf Education}\\
+\centerline {University of California, Santa Cruz; B.S. in Computer Science, in progress}
+\centerline {Cabrillo College; A.A. in Mathematics and A.A. in Computer Science}
+\centerline {Skills Certificate: Game programming in Java}
+\centerline {Alternative Family Education, graduated 2007}
+
+\bigskip
+%%CORE COMPETENCIES
+\noindent {\Large \bf Core Competencies}
+\smallskip
+\begin{center}
+  \begin{tabular}{llll}
+    Passionate Teacher ~~& Typesetting & Algebra & Linear Algebra\\
+    Organized & Programming & Calculus & Differential Equations\\
+    Self Motivated & Project Management & Probability & Patient Tutor\\
+  \end{tabular}
+\end{center}
+
+
+%%PROFESSIONAL BACKGROUND
+\bigskip
+\noindent {\Large \bf Professional Background}
+\begin{adjustwidth}{0.3in}{0cm}
+  \noindent {\large \bf Private Math and Computer Science Tutor \hfill 2005-current}\\
+  Designed and implemeted curriculum for Introduction to Computer Science for middle schoolers.
+  Assisted graduate students at UCSC in the fields of Bioinformatics, Computational Linguistics, and Programming Languages.
+
+  \bigskip
+  \noindent {\large \bf Math Learning Center Tutor\hfill 2010-2012}\\
+  Helped students in a variety of math subjects, including review of current material, and aided in test preperation. 
+  Transitioned into training new tutors in various teaching methods and best tutoring practices.
+  Worked with students at levels ranging from Essential Math, Algebra, Calculus, and Differential Equations. 
+  Assisted with troubleshooting and programming of the Polyhedral data tracking program.
+
+  \bigskip
+  \noindent {\large \bf Computer Technology Center Tutor\hfill 2010-2012}\\
+  Tutored students in every programming language taught at Cabrillo College, as well as Introudction to Algorithms and Datastructures,  and Discrete Math.
+\end{adjustwidth}
+
+%%PERSONAL PROJECTS
+\bigskip
+\noindent {\Large \bf Personal Projects}
+\begin{adjustwidth}{.3in}{0cm}
+  \noindent {\large \bf Fractal Viewer}\\
+  Fractal viewing software using Python and PyGame for rendering many different kinds of fractals. 
+  Designed as a teaching instrument to show how a small change in initial parameters can lead to majorly different looking fractals. Repository can be found on github.com/stealthycoin.
+
+  \bigskip
+  \noindent {\large \bf Kaleidoscope}\\
+  System for generating medium scale websites using low level descriptions of the site requirements in JSON. Deploys website skeleton using Django as the base framework. Currently in the planning stages.
+\end{adjustwidth}
+
+
+\end{document}
