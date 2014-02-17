@@ -1,0 +1,43 @@
+\documentclass{article}
+
+\title{Homework 3}
+\author{John Carlyle}
+
+\begin{document}
+\maketitle
+
+\begin{enumerate}
+  \item
+    \begin{enumerate}
+      \item http://pgp.mit.edu/ ``John Carlyle''
+      \item Spreads out the web of trust further. Which goes hand in hand with it being able to accuratly indicate your identity. It would be a lot easier to convince one community I am another person. If however I have signatures from multple communities that I knew at different times it is much less likely I have convinced all those people I knew at different times in different geographical locations that I am a different person.
+    \end{enumerate}
+
+  \item
+    Whether or not it is correct, it has a lot of influence. It is currently in the list of 6 links (at least for me) that appear under xkcd on the google search page for ``xkcd''. I also have not read this comic siunce it came out and I still remember the example password. Even if the security claims are wrong, it certainly has a good point about memorability. I agree with the statement overall, although there are some drawbacks of long passwords. The general principle is that instead of generating long passwords from a small alphabet, we generate short passwords from a much longer alphabet. More concretly, in the XKCD proposed scheme the dictionary is essentially used as an alphabet, and has $2^{11}$ entries. I think this estimate is actually an underestimate. I did a little bit of research on how word lists are compiled for dictionary attacks and found some ineresting tools. http://www.digininja.org/projects/cewl.php can crawl a website and collect unique words on that site and add them to your wordlist. \small \begin{verbatim}grep -v \' /etc/dictionaries-common/words | awk 'length > 5' | wc -l\end{verbatim} \normalsize yields 62652 words, which makes me think with all the words specific to the target we are interested in added to the wordlist the dictionary size might be closer to $2^{12}$ or $2^{13}$ than $2^{11}$. Regardless, the entropy of the system using words as the alphabet symbols requires only three words to exceed the entropy of the super confusing password scheme. The only argument I could see for the opposing viewpoint is that perhaps the password scheme is harder to guess which I suppose is why he added an extra three bits of entropy too it in the comic to allow for other password schemes. However if we adhere Kerckhoffs's principle we must assume that the attacker knows the format of each password. Another reason to argue against large passwords is that they can be misstyped and cost a company money in the form of customer support. Even if it is just a personal password, the longer it is the more prone to annoyance and typing errors it is. For example: my friend and I have a few VPSs that we manage, all of the passwords are 8 words at least, which means I never forget them since they are memorable, but I also can't type them to save my life. Luckily public private key saves the day for SSH connections. This question was a very interesting rabbit-hole that lead me to disable single-user mode on my mac laptops. So thanks.
+
+  \item
+    \begin{enumerate}
+
+      \item
+        Alice is being authenticated to Bob in this case. This is being done by the following process:
+      \begin{enumerate}
+        \item Alice sends to Bob ``Hey I'm Alice!''
+        \item Bob encrypts a Nonce with Alice's public key and sends it back to Alice.
+        \item Alice uses her private key to decrypt the nonce sent over by Bob, and sends it back to prove she is in fact Alice (or at least has Alice's private key).
+      \end{enumerate}
+
+      The idea here is that no one other than Alice should be able to figure out what $n_0$. Bob is satisfied that the person on the other end really is Alice if they nonce comes back correct.
+    \end{enumerate}
+    
+  \item
+
+  \item
+
+  \item
+
+  \item
+\end{enumerate}
+
+
+\end{document}

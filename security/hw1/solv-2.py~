@@ -1,0 +1,37 @@
+import getopt,sys,re
+
+def analyzeSlice(size, datum):
+    """calculate coincidence index"""
+    cols = []
+    for i in range(size):
+        row = ""
+        while i < len(datum):
+            row += datum[i]
+            i += size
+        cols.append(row)
+            
+    print cols
+
+
+def keyLength(filename):
+    """try and find the key length using the magic of statistics"""
+    with open(filename) as f:
+        data = f.read()
+    
+    data = re.sub('[^A-Z]','',data.upper())
+    
+    analyzeSlice(3, data)
+
+def main():
+    """Main function. What do you want from me?"""
+    opts, args = getopt.getopt(sys.argv[1:], "k")
+    flags = [o for o,a in opts]
+    
+    filename = args[0]
+
+    if "-k" in flags:
+        #find key length
+        keyLength(filename)
+
+if __name__ == '__main__':
+    main()

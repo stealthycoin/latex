@@ -1,0 +1,117 @@
+\documentclass{article}
+\title{Homework 1}
+\author{John Carlyle}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{url}
+
+\begin{document}
+\maketitle
+
+\begin{enumerate}
+\item a
+\item b
+\item 
+  My first idea was to re-write my previous program for decrypting things based on letter frequency and a dictionary. But what fun would that be? Instead I decided to see if a genetic algorithm could crack it. Instead of just launcing into it I first looked for some research on the topic online and found this: \url{http://people.cs.uct.ac.za/~jkenwood/JasonBrownbridge.pdf}
+
+  I stole all their constants and techniques for selection, touranments, elitism, mutation, population and crossover. Since all the aformentioned constants are hard to find and can take awhile, which isn't much fun. 
+
+  I implemented the GA in python (see attached file ga-1.py), and used trigram frequencies to calculate the fitness of each key. The common english trigrams were initially collected by scanning A Tale of Two Cities by Charles Dickens. After the first attempt at decrypting the cyphertext (100 generations) I had recieved the following result as my fittest individual:
+
+  \center {KEY: BDFJKHMAWTVPGULNYZCXSIOEQR, Fitness: 11796.3075445}
+  \tiny
+  \begin{tabular}{llllllllllll}
+    SECRE&TNSAE&AVESD&ROPPI&NGISS&TILLI&NTHEN&EWSDE&TAILS&ABOUT&ONCES&ECRET\\
+    PROGR&AMSCO&NTINU&ETOLE&AKTHE&DIREC&TOROF&NATIO&NALIN&TELLI&GENCE&HASRE\\
+    CENTL&YDECL&ASSIF&IEDAD&DITIO&NALIN&FORMA&TIONA&NDTHE&PRESI&DENTS&REVIE\\
+    WGROU&PHASZ&USTRE&LEASE&DITSR&EPORT&ANDRE&COMME&NDATI&ONSWI&THALL&THISG\\
+    OINGO&NITSE&ASYTO&BECOM&EINUR&EDTOT&HEBRE&ADTHA&NDDEP&THOFT&HENSA&SACTI\\
+    VITIE&SBUTT&HROUG&HTHED&ISCLO&SURES&WEVEL&EARNE&DANEN&ORMOU&SAMOU&NTABO\\
+    UTTHE&AGENC&YSCAP&ABILI&TIESH&OWITI&SFAIL&INGTO&PROTE&CTUSA&NDWHA&TWENE\\
+    EDTOD&OTORE&GAINS&ECURI&TYINT&HEINF&ORMAT&IONAG&EFIRS&TANDF&OREMO&STTHE\\
+    SURVE&ILLAN&CESTA&TEISR&OBUST&ITISR&OBUST&POLIT&ICALL&YLEGA&LLYAN&DTECH\\
+    NICAL&LYICA&NNAME&THREE&DIFFE&RENTN&SAPRO&GRAMS&TOCOL&LECTG&MAILU&SERDA\\
+    TATHE&SEPRO&GRAMS&AREBA&SEDON&THREE&DIFFE&RENTT&ECHNI&CALEA&VESDR&OPPIN\\
+    GCAPA&BILIT&IESTH&EYREL&YONTH&REEDI&FFERE&NTLEG&ALAUT&HORIT&IESTH&EYINV\\
+    OLVEC&OLLAB&ORATI&ONSWI&THTHR&EEDIF&FEREN&TCOMP&ANIES&ANDTH&ISISZ&USTGM\\
+    AILTH&ESAME&ISTRU&EFORC&ELLPH&ONECA&LLREC&ORDSI&NTERN&ETCHA&TSCEL&LPHON\\
+    ELOCA&TIOND&ATASE&CONDT&HENSA&CONTI&NUEST&OLIEA&BOUTI&TSCAP&ABILI&TIESI\\
+    THIDE&SBEHI&NDTOR&TURED&INTER&PRETA&TIONS&OFWOR&DSLIK&ECOLL&ECTIN&CIDEN\\
+    TALLY&TARGE&TANDD&IRECT&EDITC&LOAKS&PROGR&AMSIN&MULTI&PLECO&DENAM&ESTOO\\
+    BSCUR&ETHEI&RFULL&EXTEN&TANDC&APABI&LITIE&SOFFI&CIALS&TESTI&FYTHA&TAPAR\\
+    TICUL&ARSUR&VEILL&ANCEA&CTIVI&TYISN&OTDON&EUNDE&RONEP&ARTIC&ULARP&ROGRA\\
+    MORAU&THORI&TYCON&VENIE&NTLYO&MITTI&NGTHA&TITIS&DONEU&NDERS&OMEOT&HERPR\\
+    OGRAM&ORAUT&HORIT&YTHIR&DUSGO&VERNM&ENTSU&RVEIL&LANCE&ISNOT&ZUSTA&BOUTT\\
+    HENSA&THESN&OWDEN&DOCUM&ENTSH&AVEGI&VENUS&EXTRA&ORDIN&ARYDE&TAILS&ABOUT\\
+    THENS&ASACT&IVITI&ESBUT&WENOW&KNOWT&HATTH&ECIAN&ROFBI&DEAAN&DLOCA&LPOLI\\
+    CEALL&ENGAG&EINUB&IQUIT&OUSSU&RVEIL&LANCE&USING&THESA&MESOR&TSOFE&AVESD\\
+    ROPPI&NGTOO&LSAND&THATT&HEYRE&GULAR&LYSHA&REINF&ORMAT&IONWI&THEAC&HOTHE\\
+    R
+  \end{tabular}
+  \normalsize
+
+  This key seemed to have one or two inversions left in it but the text was clearly about the NSA and security. So I choose a different training text, The Shadow Factory by James Bamford. After training on a text with similar words in it the average fitness of the population rose much more quickly and after convergence gave me the correct key. Below is the key and the messsage with manually added spaces.
+
+  \center{Key: BDFZKHMAWTVPGULNYJCXSIOEQR, Fitness: 12796.4907841}
+  \paragraph{Message:}{SECRET NSA EAVESDROPPING IS STILL IN THE NEWS DETAILS ABOUT ONCE SECRET PROGRAMS 
+    CONTINUE TO LEAK THE DIRECTOR OF NATIONAL INTELLIGENCE HAS RECENTLY DECLASSIFIED 
+    ADDITIONAL INFORMATION AND THE PRESIDENTS REVIEW GROUP HAS JUST RELEASED ITS
+    REPORT AND RECOMMENDATIONS WITH ALL THIS GOING ON ITS EASY TO BECOME INURED TO 
+    THE BREADTH AND DEPTH OF THE NSAS ACTIVITIES BUT THROUGH THE DISCLOSURES WEVE 
+    LEARNED AN ENORMOUS AMOUNT ABOUT THE AGENCYS CAPABILITIES HOW IT IS FAILING TO 
+    PROTECT US AND WHAT WE NEED TO DO TO REGAIN SECURITY IN THE INFORMATION AGE FIRST 
+    AND FOREMOST THE SURVEILLANCE STATE IS ROBUST IT IS ROBUST POLITICALLY LEGALLY AND TECHNICALLY 
+    I CAN NAME THREE DIFFERENT NSA PROGRAMS TO COLLECT GMAIL USER DATA THESE PROGRAMS 
+    ARE BASED ON THREE DIFFERENT TECHNICAL EAVESDROPPING CAPABILITIES THEY RELY ON 
+    THREE DIFFERENT LEGAL AUTHORITIES THEY INVOLVE COLLABORATIONS WITH THREE DIFFERENT 
+    COMPANIES AND THIS IS JUST GMAIL THE SAME IS TRUE FOR CELLPHONE CALL RECORDS 
+    INTERNET CHATS CELLPHONE LOCATION DATA SECOND THE NSA CONTINUES TO LIE ABOUT ITS 
+    CAPABILITIES IT HIDES BEHIND TORTURED INTERPRETATIONS OF WORDS LIKE COLLECT 
+    INCIDENTALLY TARGET AND DIRECTED IT CLOAKS PROGRAMS IN MULTIPLE CODE NAMES TO 
+    OBSCURE THEIR FULL EXTENT AND CAPABILITIES OFFICIALS TESTIFY THAT A PARTICULAR SURVEILLANCE 
+    ACTIVITY IS NOT DONE UNDER ONE PARTICULAR PROGRAM OR AUTHORITY CONVENIENTLY OMITTING 
+    THAT IT IS DONE UNDER SOME OTHER PROGRAM OR AUTHORITY THIRD US GOVERNMENT SURVEILLANCE 
+    IS NOT JUST ABOUT THE NSA THE SNOWDEN DOCUMENTS HAVE GIVEN US EXTRAORDINARY DETAILS 
+    ABOUT THE NSAS ACTIVITIES BUT WE NOW KNOW THAT THE CIA NRO FBI DEA AND LOCAL POLICE ALL 
+    ENGAGE IN UBIQUITOUS SURVEILLANCE USING THE SAME SORTS OF EAVESDROPPING TOOLS AND THAT
+    THEY REGULARLY SHARE INFORMATION WITH EACHOTHER}
+
+\item \hfill \\
+  The first step to solving the vigenier cipher is to find the size of the key using index of coincidence. My program (attached as solv-2.py) when passed the k option and two keysizes seperated by a colon will try seperating the text into a matrix based on that key size and calculate the IC of each column. Each column is assumed to be the letters translated by the same letter of the key if the key length is equal to the width of the matrix. The results are sorted by the IC and returned to the user to show the most probable key length first. The result of running this program is shown below.
+
+  \begin{tabular}{l}
+    \$ python solv-2.py -k 3:29 hw1-2.crypt\\
+    (12, 1.707807386629266)\\
+    (20, 1.5194805194805194)\\
+    (10, 1.3886743886743886)\\
+    (24, 1.3228492136910268)\\
+    (6, 1.2981110142400465)\\
+    (21, 1.2264150943396226)\\
+    (3, 1.2167552997741677)\\
+    (4, 1.2087369815339064)\\
+    (23, 1.193877551020408)\\
+    (17, 1.187878787878788)\\
+    (8, 1.133145657387134)\\
+    (16, 1.1304347826086956)\\
+    (19, 1.109292811221508)\\
+    (15, 1.1055855855855856)\\
+    (5, 1.0944935967357492)\\
+    (18, 1.0724484399788472)\\
+    (11, 1.0700834789361289)\\
+    (9, 1.067138735903488)\\
+    (7, 1.0659979301011064)\\
+    (13, 1.0528043775649796)\\
+    (22, 1.04)\\
+    (27, 0.9965156794425087)\\
+    (14, 0.9626582278481013)\\
+    (26, 0.9501661129568105)\\
+    (25, 0.9454545454545453)\\
+    (28, 0.9)
+  \end{tabular}
+
+  These results hint that the keylength is most likely 12, 20 or 10 since they have the highest index of coincidence.
+\item e
+\item f
+\end{enumerate}
+
+\end{document}
