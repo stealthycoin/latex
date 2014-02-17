@@ -1,0 +1,59 @@
+\documentclass{article}
+\title{Personal Reflection Essay}
+\author{John Carlyle}
+\linespread{2}
+
+\usepackage[margin=1in]{geometry}
+\setlength\parindent{1in}
+
+\begin{document}
+\maketitle
+\par
+The Toilet Mapper group was an extremely positive experience.
+Each team member was individually motivated and had a slightly different background which contributed to an efficient, driven team.
+The team was small enough that very little oversight was necessary.
+For the most part, tasks were self-assigned and carried out without any oversight except for the final merging of code.
+Liad and Michael are familiar with making apps for both Android and iOS, when the time comes to port our website to apps they will be the people to do so.
+To make up for not contributing as much to the website portion of the project they both became our Google API experts.
+Morgan and Myself were the resident experts regarding Django and web development in general.
+Ace and Jeremy were enrolled in the databases class and helped quite a bit with database design, test writing, and general QA and bug fixing.
+Luckily all our team members had the same goal in this class: mainly to get an A and to make a good product we could be proud of, so there were no slackers or anyone unwilling to work hard. This has definitely could have been a major problem.
+\par
+Interpersonal disputes didn’t arise in our short three months together.
+Each member asked for help early on if they didn’t understand something, but otherwise everyone accomplished their tasks in a timely manner without any intervention by anyone else.
+That is not to say everything was perfect from the first sprint, there were a few disruptions which we learned to resolve and adjusted our workflow accordingly.
+For example, during the first sprint not much was in place for tracking who was doing what.
+At the end of the sprint it turned out that Liad and Michael had written the exact same Google API code for two pages.
+We changed our group’s workflow in sprint 2 to use github’s bug tracker tool.
+The tool allowed us to submit all user story tasks as bugs labeled “enhancement”.
+Each person could then assign themselves the tasks they wanted and any leftovers could be assigned to people who completed their self-assigned workload the fastest.
+Most problems were solved by using the bug tracker but there was still an element of using it religiously.
+Another example of miscommunication can be illustrated when Ace Morgan and Liad worked out our query system for pulling only nearby toilets from the database.
+This was a large section of code that was difficult to do and we employed mob programming to get it done.
+In the meantime Michael, Jeremy, and myself were in an adjacent room working on the profanity filter and map.
+Ace, Morgan and Liad forgot to mark the task as completed on github.
+The next day I decided to be a nice guy and get the hardest feature out of the way by implementing all the same things they had done the previous day.
+Needless to say the code I spent a whole day on was entirely useless.
+After that we were much more disciplined in our usage of the github bug tracker.
+The last week before the final sprint was different, we had to break into three teams to accomplish three tasks: Morgan and Myself closed as many bugs as possible, Liad (a former DJ) made our final presentation slideshow, and everyone else prepared the deliverables.
+\par
+Things that could have gone better were mainly with the course deliverables.
+I think our team as a unit did not need weekly checkups, the served only to hinder our progress and distract us from the work at hand.
+The same can be said of the sprint plan/results and scrum board to varying degrees.
+The physical scrum board was a huge hindrance, even after the quarter is winding down I still lament the amount of time I spent tediously filling out slips of paper and carefully keeping the state of the scrum board synced with our internally used bug reporting tool.
+Going forward we are looking forward to increased productivity mainly in the form of decreased overhead on all our tasks.
+I would estimate that for every three hours I spent coding, reviewing code, or refactoring about a half an hour was spent writing reports or moving things around on the physical scrum board.
+Considering how hard we pushed ourselves during this project I find that ratio to be extremely inhibitive to productivity.
+\par
+Going forward we will be using fewer self reporting tools and simply use scrum meetings between sprints or whenever is convenient.
+They will not be in person and will use some online tools (yet to be determined) since Ace will be moving to Washington to work at Microsoft and Liad will be living in San Jose and working at EMC.
+I think this class prepared me for working on a software development team mainly by putting me in one and having me work with people.
+The rest of the class simulated having lots of overhead, but as the research states team reports are a really bad idea, and this helped me understand what kind of questions I should be asking the interviewer during interviews.
+How do you how does your company or team handle interpersonal disputes? What kind of reporting tools do you use? How difficult is the bug reporting process in your company?
+\par
+Overall this class gave me a much more realistic picture of what working in a larger group is like.
+I had personally never worked with more than two people before.
+I am in the semi-unique position of having been programming for much longer than most of my peers (10 years instead of 2-3) so I have yet to experience being in a group where I am a Jr. programmer.
+That would be a valuable experience, and a good enough reason to take an internship. 
+
+\end{document}

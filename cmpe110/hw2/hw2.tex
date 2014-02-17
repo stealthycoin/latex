@@ -1,0 +1,152 @@
+\documentclass{article}
+\title{Homework 2 CMPE 110}
+\author{John Carlyle}
+
+\usepackage[margin=1in]{geometry}
+
+\begin{document}
+\maketitle
+
+\begin{enumerate}
+\item
+  $a = (b+c)*(b*c) + a$
+  \setlength{\tabcolsep}{2pt}
+
+  \begin{enumerate}
+    \item Stack based
+      
+      \begin{tabular}{ll}
+        push & [b]\\
+        push&[c]\\
+        add&\\
+        push&[b]\\
+        push&[c]\\
+        mult&\\
+        mult&\\
+        push&[a]\\
+        add&\\
+        pop&[a]
+      \end{tabular}
+      
+    \item Accumulator based \hfill\\
+      \begin{tabular}{ll}
+        ld&[b]\\
+        add&[c]\\
+        mult&[b]\\
+        mult&[c]\\
+        add&[a]\\
+        st&[a]
+      \end{tabular}
+
+    \item Register-memory based \hfill\\
+      \begin{tabular}{llll}
+        ld&R1,&[b]\\
+        add&R2,&[c],&R1\\
+        mult&R1,&[c],&R1\\
+        mult&R1,&R1,&R2\\
+        add&R1,&[a],&R1\\
+        st&[a],&R1
+      \end{tabular}
+
+    \item Load-Store based \hfill\\
+      \begin{tabular}{llll}
+        ld &R1,&[a]\\
+        ld &R2, &[b]\\
+        ld &R3, &[c]\\
+        mult&R4,&R2,&R3\\
+        add&R5,&R2,&R3\\
+        mult&R6,&R5,&R4\\
+        add&R1,&R1,&R6\\
+        st&[a],&R1
+      \end{tabular}
+    \end{enumerate}
+
+  \pagebreak
+\item
+  R1 = src
+
+  R2 = pat
+
+  R3 = orig
+
+  R4 = found\\\\
+  \begin{tabular}{llll}
+    mov &R3, &R1\\
+    \multicolumn{3}{l}{WHILE:}\\
+    beq &R1, &0,&ENDWHILE\\
+    beq &R2, &0,&ENDWHILE\\
+    ld &R4, &[R1]\\
+    ld &R5, &[R2]\\
+    beq &R4, &R5, &TRUTH\\
+    jamp& ENDIF\\
+    mov &R2, &R3\\
+    \multicolumn{3}{l}{TRUTH:}\\
+    add &R2, &R2,& 4\\
+    \multicolumn{3}{l}{ENDIF:}\\
+    jmp &WHILE\\
+    \multicolumn{3}{l}{ENDWHILE:}\\
+    ld& R5, &[R2]\\
+    bneq & R5,&0,&ENDIF2\\
+    ld &R4,& 0\\
+    \multicolumn{3}{l}{ENDIF2:}\\
+    ld &R4, &1
+  \end{tabular}
+
+  
+\item
+  \begin{enumerate}
+  \item\hfill\\
+    \begin{tabular}{|c|c|c|c|c|c|c|c|c|}
+      \hline
+      A & B & C & D & E & F & G & H & I\\
+      \hline
+      0x101 & -2 & 0x103 & x & SUB & x & 0x111 (7) & 0x404 & x\\
+      \hline
+    \end{tabular}
+  \item \hfill\\
+    \begin{tabular}{|c|c|c|c|}
+      \hline
+      Signal & LD & CALL & SUB\\
+      \hline
+      RegDst & 1 & x & 0\\
+      \hline
+      RegWrite & 1 & 0 & 1\\
+      \hline
+      ALUSrc & 0 & x & 0\\
+      \hline
+      PCSrc & 1 & 0 & 1\\
+      \hline
+      ALUOp & ADD & x & SUB \\
+      \hline
+      MemWrite & 0 & 0 & 0 \\
+      \hline
+      MemRead & 1 & 0 & 0\\
+      \hline
+      MemToReg & 1 & 0 & 0\\
+      \hline
+      Call & 0 & 1 & 0 \\
+      \hline
+    \end{tabular}
+  \end{enumerate}
+  
+\item\hfill\\
+  \begin{tabular}{|c|c|c|}
+    \hline
+    Instruction & MUX D & MUX E\\
+    \hline
+    JMP & x & 1\\
+    \hline
+    BNE foo (taken) & 1 & 0\\
+    \hline
+    CALL & x & 1 \\
+    \hline
+    RET & 1 & 0\\
+    \hline
+    JMPL R5 & 1 & 0\\
+    \hline
+    BLE bar (not taken) & 0 & 0\\
+    \hline
+  \end{tabular}
+\end{enumerate}
+
+\end{document}

@@ -1,0 +1,78 @@
+\documentclass{article}
+\title{CMPE 110 Homework 3}
+\author{John Carlyle}
+
+\usepackage{lscape}
+\usepackage[margin=0.5in]{geometry}
+
+\begin{document}
+
+
+\maketitle
+
+\begin{description}
+
+
+
+\item[2)] \hfill\\
+
+  No branch delay slot.
+
+  b stands for bubble.
+
+  - means the instruction was squashed.
+
+  \begin{tabular}{|l|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|}
+    \hline
+    Times & T0 & T1 & T2 & T3 & T4 & T5 & T6 & T7 & T8 & T9 & T10 & T11 & T12 & T13 & T14\\
+    \hline
+    add r2 r2 r3&IF0&IF1&ID&X0&WB&&&&&&&&&&\\
+    \hline
+    add r3 r3 \#1&&IF0&IF1&ID&X0&WB&&&&&&&&&\\
+    \hline
+    ld r4 [r3+r5]&&& IF0 & IF1 & ID & X0 & X1 & X2 & X3 & WB &&&&&\\
+    \hline
+    add r7 r7 r4 &&&& IF0 & IF1 & ID & ID & ID & ID  & X0 & WB &&&&\\
+    \hline
+    cmp r3 r7 &&&&& IF0 & IF1 & IF1 & IF1 & IF1 & ID & X0 & X1 & WB &&\\
+    \hline
+    bne foo &&&&&& IF0 & IF0 & IF0 & IF0 & IF1 & ID & ID & ID &&\\
+    \hline
+    ldr &&&&&&&b&b&b& IF0 & IF1 & IF1 & IF1 & - & \\
+    \hline
+    mov r0 \#0 &&&&&&&&&&& IF0 & IF0 & IF0 & - &  \\
+    \hline
+    \hline
+    Times & T11 & T12 & T13 & T14 & T15 & T16 & T17 & T18 & T19 & T20 & T21 & T22 & T23 & T24 & T25\\
+    \hline
+    str r2 [r3 \#0] & b & b & - & &&&&&&&&&&&\\
+    \hline
+    add r2 r2 r3&IF0&IF1&ID&X0&WB&&&&&&&&&&\\
+    \hline
+    add r3 r3 \#1&&IF0&IF1&ID&X0&WB&&&&&&&&&\\
+    \hline
+    ld r4 [r3+r5]&&& IF0 & IF1 & ID & X0 & X1 & X2 & X3 & WB &&&&&\\
+    \hline
+    add r7 r7 r4 &&&& IF0 & IF1 & ID & ID & ID & ID  & X0 & WB &&&&\\
+    \hline
+    cmp r3 r7 &&&&& IF0 & IF1 & IF1 & IF1 & IF1 & ID & X0 & X1 & WB &&\\
+    \hline
+    bne foo &&&&&& IF0 & IF0 & IF0 & IF0 & IF1 & ID & ID & ID &&\\
+    \hline
+    ldr &&&&&&&b&b&b& IF0 & IF1 & IF1 & IF1 & - & \\
+    \hline
+  \end{tabular}
+  
+
+
+\item[4a)]
+  True. The mov instruction after bge is executed all the way through even though it should stop after the bge ID since it knows it needs to jump to the add. There should be a nop there to prevent this.
+\item[4b)] True. Every shown type of instruction has the stages: F1 F2 ID EX MM WB. 
+\item[4c)] Unknown. No situation where data forwarding would have to happen is shown in the example above.
+\item[4d)] Unknown. How would I know if its a 32-bit architecture?]
+\item[4e)] True. A control hazard as referenced in part a.
+\item[4f)] False. Pipelining causes branch hazards. We will always have a bubble of at least size 2 because of the 2 fetch stages.
+\end{description}
+
+
+\end{document}

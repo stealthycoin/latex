@@ -1,0 +1,52 @@
+\documentclass{article}
+\usepackage{listings}
+\usepackage{color}
+
+\definecolor{mygreen}{rgb}{.1,.5,.1}
+\definecolor{mybrown}{rgb}{0.4,.2,0}
+\definecolor{myred}{rgb}{.7,.1,.1}
+
+\title{Python Reference}
+\author{John Carlyle}
+
+\lstset{
+  commentstyle=\color{mygreen},
+  keywordstyle=\color{blue},
+  stringstyle=\color{mybrown},
+  identifierstyle=\color{myred},
+  numberstyle=\color{orange},
+  tabsize=2,
+  showstringspaces=false
+}
+
+\begin{document}
+\maketitle
+\lstset{language=Python}
+
+
+{\noindent\Large\bf Defining a variable.}
+\lstinputlisting{variables.py}
+
+
+\bigskip
+{\noindent\Large\bf If statements}
+\lstinputlisting{if.py}
+
+
+\bigskip
+{\noindent\Large\bf Repeat loops}
+\lstinputlisting{loops.py}
+
+\bigskip
+{\noindent\Large\bf Questions}
+\\
+
+\begin{enumerate}
+
+\item What does the defining a variable example print out?
+\item What does the if statements example print out?
+\item What does the repeat loops example print out?
+
+\end{enumerate}
+
+\end{document}

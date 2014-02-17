@@ -1,0 +1,24 @@
+\documentclass{article}
+\author{John Carlyle}
+\title{Prove the union of CFLs is a CFL}
+
+\begin{document}
+\maketitle
+
+Define the $G_u$ to be the union of the grammars $G_1$, $G_2$. More concretly $G_u = (V_u,\Sigma,S_u,P_u)$, $G_1 = (V_1,\Sigma,S_1,P_1)$ and $S_2 = (V_2,\Sigma,S_2,P_2)$. Assume that $V_1 \cap V_2 = \phi$ since the elements can be arbitrarily renamed.
+
+Let $V_u = V_1 \cup V_2 \cup \{S_u\}$ where $S_u$ is not in $V_1$ or $V_2$.
+
+Let $P_u = P_1 \cup P_2 \cup \{S \rightarrow S_1 ~|~ S_2\}$\\\\
+
+We must show that $L(G_u) = L_1 \cup L_2$\\
+Firstly $L(G_u) \subseteq L_1 \cup L_2$
+\begin{center}
+  bam
+\end{center}
+
+
+Secondly $L_1 \cup L_2 \subseteq L(G_u)$
+
+
+\end{document}
