@@ -30,6 +30,10 @@
       \end{enumerate}
 
       The idea here is that no one other than Alice should be able to figure out what $n_0$. Bob is satisfied that the person on the other end really is Alice if they nonce comes back correct.
+      \item
+        We can ignore the possibility that B isn't the correct person (server) since this protocol is only concerned with authenticating the identity of Alice. The problem is that anyone could be claiming to be Alice in this situation. For example I could go make a public key and upload it to some server saying I am Hank McGillicuddy. So all this protocol does is verify that Alice is someone with a public/private keypair. Not particularly useful.
+      \item
+        This could be fixed by requiring an ID and a certificate from a trusted certificate authority of some kind. This way Bob could be certain that Alice is who she says she is since the certificate cannot be forged.
     \end{enumerate}
     
   \item
@@ -70,11 +74,11 @@
   \item
     \begin{enumerate}
     \item
-      {\bf no access for group and other}
+      {\bf no access for group and other} User is in control of sensitive data that should not be shared with any other users.
     \item
-      {\bf read/exec for group none for other}
+      {\bf read/exec for group none for other} Used for sharing files amongst multiple users. All need the ability to read the files. You can specify which users are allowed to view the files by adding them to the group.
     \item
-      {\bf read/exec for group and other}
+      {\bf read/exec for group and other} This case is useful when making a new user to handle a web application. The application owns all of its files, but www-data needs to have read access to be able to serve the files.
     \end{enumerate}
 \end{enumerate}
 
