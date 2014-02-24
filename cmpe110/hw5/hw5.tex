@@ -1,0 +1,64 @@
+\documentclass{article}
+\usepackage[margin=.5in]{geometry}
+
+\author{John Carlyle}
+\title{Homework 5}
+
+\begin{document}
+\maketitle
+
+\section{}
+\subsection{1MB direct cache, 16 byte line}
+$16 = 2^4$ so 4 bits are needed to index into the cache bytes. $\frac{2^{20}}{2^4} = 2^{16}$ lines in the cache, so we need $16$ bits to index into cache lines. Bits remaining for the tag $32-16-4 = 12$.
+
+\subsection{2MB 8 way associative cache, 8 byte line}
+$8 = 2^3$ so 3 bits are needed to index into the cache bytes. $\frac{2^{21}}{2^3\cdot8} = \frac{2^21}{2^3\cdot2^3} = \frac{2^{21}}{2^6}= 2^{15}$ so, $15$ bits are need to index into the sets. That leaves $32-15-3=14$ bits for the tag.
+
+\subsection{3MB 32 way associative cache, 16 byte line}
+$16 = 2^4$ so 4 bits are needed to index into the cache bytes. $\frac{2^{22}}{2^4\cdot2^5} = \frac{2^{22}}{2^9} = 13$ so, 13 bits are needed to index into the sets. That leaves $32-13-4=15$ bits for the tag.
+
+
+\section{}
+\subsection{}
+$16 = 2^4$ so 4 bits are needed to index into the cache bytes. $\frac{2^{19}}{2^4} = 2^{15}$ lines in the cache, so we need $15$ bits to index into the cache lines. Bits remaining for tag $32-15-4 = 13$\\
+
+\begin{tabular}{|c|c|c|c|c|}
+  \hline
+  Memory Address & Tag & Index & Byte & Hit/Miss\\
+  \hline
+  0x1234AB22 & 0001\_0010\_0011\_0 =0x246  & 100\_1010\_1010\_0010 = 0x4AB2 & 0010 = 0x2 & Miss \\
+  \hline
+  0x1234AB20 & 0001\_0010\_0011\_0 =0x246  & 100\_1010\_1010\_0010 = 0x4AB2 & 0000 = 0x0 & Hit \\
+  \hline
+  0x1234D020 & 0001\_0010\_0011\_0 =0x246  & 100\_1101\_0000\_0010 = 0x4D02 & 0000 = 0x0 & Miss \\
+  \hline
+  0x1234D02F & 0001\_0010\_0011\_0 =0x246  & 100\_1101\_0000\_0010 = 0x4D02 & 1111 = 0xF & Hit \\
+  \hline
+  0x1234AB26 & 0001\_0010\_0011\_0 =0x246  & 100\_1010\_1011\_0010 = 0x4AB2 & 0110 = 0x6 & Hit \\
+  \hline
+  0x1234AB333 & 0001\_0010\_0011\_0 =0x246  & 100\_1101\_1011\_0011 = 0x4AB3 & 0011 = 0x3 & Hit \\
+  \hline
+  0x1234D023 & 0001\_0010\_0011\_0 =0x246  & 100\_1101\_0000\_0010 = 0x4D02 & 0011 = 0x3 & Hit \\
+  \hline
+  0x1234D02B & 0001\_0010\_0011\_0 =0x246  & 100\_1010\_1011\_0010 = 0x4AB2 & 1011 = 0xB & Hit \\
+  \hline
+  0x1234AB22 & 0001\_0010\_0011\_0 =0x246  & 100\_1010\_1011\_0010 = 0x4AB2 & 0010 = 0x2 & Hit \\
+  \hline
+  0x1234AB28 & 0001\_0010\_0011\_0 =0x246  & 100\_1010\_1011\_0010 = 0x4AB2 & 0010 = 0x8 & Hit \\
+  \hline
+\end{tabular}\\\\
+Hit rate = $\frac{8}{10} = .8$
+
+
+\subsection{}
+$16 = 2^4$ so 4 bits are needed to index into the cache bytes. $\frac{2^{19}}{2^4\cdot2} = 2^{14}$ lines in the cache, so we need $14$ bits to index into the cache lines. Bits remaining for tag $32-14-4 = 14$\\
+
+\begin{tabular}{|c|c|c|c|c|}
+  \hline
+  Memory Address & Tag & Index & Byte & Hit/Miss\\
+  \hline
+  0x1234AB22 & 0001\_0010\_0011\_01 =0x44C  & 00\_1011\_1010\_0010 = 0xAB2 & 0010 = 0x2 & Miss \\
+  \hline
+\end{tabular}\\\\
+
+\end{document}
